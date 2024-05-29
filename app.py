@@ -1,5 +1,4 @@
 import requests
-from streamlit_lottie import st_lottie
 import streamlit as st
 import pandas as pd
 import os
@@ -26,22 +25,9 @@ def save_data(data):
 # Load existing data
 data = load_data()
 
-# Function to load Lottie animation from URL
-def load_lottieurl(url):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-# Load Lottie animation
-lottie_coding = load_lottieurl("https://lottie.host/85669ecf-afa8-435d-9357-5413015262f2/NHA9A2yzhF.json")
-
 # Streamlit app
 st.title('Stolen Vehicle License Plate Registry')
 
-# Display Lottie animation
-if lottie_coding:
-    st_lottie(lottie_coding, height=300, key="coding")
 
 # Form for entering license plate, location, and time
 with st.form('license_plate_form'):
